@@ -1,5 +1,6 @@
 import './App.css'
 import Header from './components/Header'
+import NovaTarefa from './components/NovaTarefa'
 import ToDoList from './components/ToDoList'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <Header />
       <ToDoList />
+      <NovaTarefa />
     </>
   )
 }
