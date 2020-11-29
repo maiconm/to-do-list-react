@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
     <>
       <div className="navbar navbar-dark bg-dark shadow-sm">
         <div className="container">
-          <a href="/to-do-list">🏠 Home</a>
-          <a href="/nova-tarefa">➕ Nova Tarefa</a>
+          <Link to="/">🏠 Home</Link>
+          <Link to="/nova-tarefa">➕ Nova Tarefa</Link>
         </div>
       </div>
     </>
