@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Redirect,
   Route,
@@ -10,6 +11,13 @@ import NovaTarefa from './components/NovaTarefa'
 import ToDoList from './components/ToDoList'
 
 function App() {
+  const [tarefas, setTarefas] = useState([
+    {descricao: 'Tarefa 1', done: false},
+    {descricao: 'Tarefa 2', done: true},
+  ])
+
+
+
   return (
     <Router>
       <Header />
@@ -17,7 +25,7 @@ function App() {
         <div className="row">
           <Switch>
               <Route path="/home">
-                <ToDoList />
+                <ToDoList tarefas={tarefas} />
               </Route>
               <Route path="/nova-tarefa">
                 <NovaTarefa />
