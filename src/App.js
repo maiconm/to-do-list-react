@@ -12,8 +12,8 @@ import ToDoList from './components/ToDoList'
 
 function App() {
   const [tarefas, setTarefas] = useState([
-    {descricao: 'Tarefa 1', done: false},
-    {descricao: 'Tarefa 2', done: true},
+    {descricao: 'Tarefa 1', feito: false},
+    {descricao: 'Tarefa 2', feito: true},
   ])
 
 
@@ -25,7 +25,7 @@ function App() {
         <div className="row">
           <Switch>
               <Route path="/home">
-                <ToDoList tarefas={tarefas} />
+                <ToDoList tarefasProp={tarefas} />
               </Route>
               <Route path="/nova-tarefa">
                 <NovaTarefa />
