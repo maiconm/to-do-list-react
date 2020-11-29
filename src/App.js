@@ -11,12 +11,34 @@ import NovaTarefa from './components/NovaTarefa'
 import ToDoList from './components/ToDoList'
 
 function App() {
-  const [tarefas, setTarefas] = useState([
-    {descricao: 'Tarefa 1', feito: false},
-    {descricao: 'Tarefa 2', feito: true},
-  ])
+  const [tarefas, setTarefas] = useState([])
 
+  const cadastrar = descricaoTarefa => {
+    if (descricaoTarefa && !tarefaExiste(descricaoTarefa)) {
+      setTarefas([{descricao: descricaoTarefa, feito: false}, ...tarefas])
+    } else {
+      return {erro: 'Digite uma tarefa valida ❗'}
+    }
+  }
 
+  const tarefaExiste = descricaoTarefa => !!tarefas.find(
+    ({descricao}) => descricao === descricaoTarefa
+  )
+
+  const excluir = descricaoTarefa => {
+    setTarefas(tarefas.filter(tarefa => tarefa.descricao !== descricaoTarefa))
+  }
+
+  const toggleTarefaFeita = tarefaAlterada => {
+    console.log(tarefas)
+    const tarefasAtualizada = tarefas.map(tarefa => {
+      if (tarefa.descricao === tarefaAlterada.descricao) {
+        tarefa.feito = !tarefa.feito
+      }
+      return tarefa
+    })
+    setTarefas(tarefasAtualizada)
+  }
 
   return (
     <Router>
@@ -25,10 +47,14 @@ function App() {
         <div className="row">
           <Switch>
               <Route path="/home">
-                <ToDoList tarefasProp={tarefas} />
+                <ToDoList
+                  tarefasProp={tarefas}
+                  excluirProp={excluir}
+                  toggleTarefaFeitaProp={toggleTarefaFeita}
+                />
               </Route>
               <Route path="/nova-tarefa">
-                <NovaTarefa />
+                <NovaTarefa onSubmit={cadastrar} />
               </Route>
             <Route path="/">
               <Redirect to="/home" />

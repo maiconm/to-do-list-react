@@ -1,26 +1,23 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-function ToDoList({ tarefasProp }) {
-  const [tarefas, setTarefas] = useState(tarefasProp)
+function ToDoList({ tarefasProp, excluirProp, toggleTarefaFeitaProp }) {
+  const [tarefas, setTarefas] = useState([])
   
-  const excluir = descricaoTarefa => {
-    setTarefas(tarefas.filter(tarefa => tarefa.descricao !== descricaoTarefa))
+  useEffect(() => {
+    setTarefas(tarefasProp)
+  }, [tarefasProp, excluirProp, toggleTarefaFeitaProp])
+
+  const handleExcluir = descricaoTarefa => {
+    excluirProp(descricaoTarefa)
   }
 
-  const toggleTarefaFeita = tarefaAlterada => {
-    console.log(tarefas)
-    const tarefasAtualizada = tarefas.map(tarefa => {
-      if (tarefa.descricao === tarefaAlterada.descricao) {
-        tarefa.feito = !tarefa.feito
-      }
-      return tarefa
-    })
-    setTarefas(tarefasAtualizada)
+  const handleToggleTarefaFeita = tarefaAlterada => {
+    toggleTarefaFeitaProp(tarefaAlterada)
   }
 
   return (
     <div className="col-6">
-      <h1>To do list</h1>
+      <h1>Tarefas</h1>
       <ul className="list-group-sm">
         {tarefas.map(tarefa => (
           <li
@@ -29,7 +26,7 @@ function ToDoList({ tarefasProp }) {
           >
             <div className="float-left">
               <input
-                onChange={() => toggleTarefaFeita(tarefa)}
+                onChange={() => handleToggleTarefaFeita(tarefa)}
                 checked={tarefa.feito}
                 className="mr-1"
                 type="checkbox"
@@ -39,7 +36,7 @@ function ToDoList({ tarefasProp }) {
             <div className="float-right">
               {
                 tarefa.feito && <button
-                  onClick={() => excluir(tarefa.descricao)}
+                  onClick={() => handleExcluir(tarefa.descricao)}
                   className="btn btn-danger"
                 >
                   ✖
