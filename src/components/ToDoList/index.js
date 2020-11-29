@@ -7,6 +7,7 @@ function ToDoList() {
         <li className="list-group-item clearfix">
           <div className="float-left">
             <input
+              className="mr-1"
               checked
               type="checkbox"
             />
@@ -19,6 +20,7 @@ function ToDoList() {
         <li className="list-group-item clearfix">
           <div className="float-left">
             <input
+              className="mr-1"
               checked
               type="checkbox"
             />
