@@ -7,8 +7,16 @@ function App() {
   return (
     <>
       <Header />
-      <ToDoList />
-      <NovaTarefa />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <ToDoList />
+          </div>
+          <div className="col">
+            <NovaTarefa />
+          </div>
+        </div>
+      </div>
     </>
   )
 }
