@@ -30,7 +30,6 @@ function App() {
   }
 
   const toggleTarefaFeita = tarefaAlterada => {
-    console.log(tarefas)
     const tarefasAtualizada = tarefas.map(tarefa => {
       if (tarefa.descricao === tarefaAlterada.descricao) {
         tarefa.feito = !tarefa.feito

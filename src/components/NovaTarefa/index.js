@@ -2,12 +2,12 @@ import { useState } from 'react'
 
 function NovaTarefa({ onSubmit }) {
   const [tarefa, setTarefa] = useState('')
-  const [mensagemCadastro, setMensagemCadastro] = useState(null)
+  const [mensagemCadastro, setMensagemCadastro] = useState('')
 
   const cadastrar = event => {
     event.preventDefault()
     const erroCadastro = onSubmit(tarefa)
-    setMensagemCadastro(erroCadastro || {sucesso: 'Cadastrado com sucesso! ✅'})
+    setMensagemCadastro(erroCadastro || {sucesso: `Tarefa ${tarefa} cadastrada com sucesso! ✅`})
   }
 
   return (
@@ -22,8 +22,8 @@ function NovaTarefa({ onSubmit }) {
               onChange={({target}) => setTarefa(target.value)}
               type="text"
               className="form-control"
-              placeholder="fazer todo list"
-              aria-label="fazer todo list"
+              placeholder="ex.: lavar o carro"
+              aria-label="ex.: lavar o carro"
               aria-describedby="button-addon2"
             />
             <div className="input-group-append">
