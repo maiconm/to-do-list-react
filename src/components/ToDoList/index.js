@@ -19,7 +19,9 @@ function ToDoList({ tarefasProp, excluirProp, toggleTarefaFeitaProp }) {
     <div className="col-6">
       <h1>Tarefas</h1>
       {
-        !tarefas.length && <span className="alert alert-warning">Nenhuma tarefa encontrada 🤷</span>
+        !tarefas.length && <span className="alert alert-warning">
+          Nenhuma tarefa encontrada 🤷
+        </span>
       }
       <ul className="list-group-sm">
         {tarefas.map(tarefa => (

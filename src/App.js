@@ -45,16 +45,16 @@ function App() {
       <div className="container">
         <div className="row">
           <Switch>
-              <Route path="/home">
-                <ToDoList
-                  tarefasProp={tarefas}
-                  excluirProp={excluir}
-                  toggleTarefaFeitaProp={toggleTarefaFeita}
-                />
-              </Route>
-              <Route path="/nova-tarefa">
-                <NovaTarefa onSubmit={cadastrar} />
-              </Route>
+            <Route path="/home">
+              <ToDoList
+                tarefasProp={tarefas}
+                excluirProp={excluir}
+                toggleTarefaFeitaProp={toggleTarefaFeita}
+              />
+            </Route>
+            <Route path="/nova-tarefa">
+              <NovaTarefa onSubmit={cadastrar} />
+            </Route>
             <Route path="/">
               <Redirect to="/home" />
             </Route>
