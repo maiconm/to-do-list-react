@@ -14,7 +14,7 @@ function App() {
   const [tarefas, setTarefas] = useState([])
 
   const cadastrar = descricaoTarefa => {
-    if (descricaoTarefa && !tarefaExiste(descricaoTarefa)) {
+    if (descricaoTarefa.trim() && !tarefaExiste(descricaoTarefa)) {
       setTarefas([{descricao: descricaoTarefa, feito: false}, ...tarefas])
     } else {
       return {erro: 'Digite uma tarefa valida ❗'}
